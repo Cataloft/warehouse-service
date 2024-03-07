@@ -1,4 +1,4 @@
-module lamoda_task
+module github.com/Cataloft/warehouse-service
 
 go 1.21
 

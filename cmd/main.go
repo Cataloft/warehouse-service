@@ -9,13 +9,11 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/jackc/pgx/v5/stdlib"
-
+	"github.com/Cataloft/warehouse-service/internal/config"
+	"github.com/Cataloft/warehouse-service/internal/server"
+	"github.com/Cataloft/warehouse-service/internal/storage/postgres"
 	"github.com/c9s/goose"
-
-	"lamoda_task/internal/config"
-	"lamoda_task/internal/server"
-	"lamoda_task/internal/storage/postgres"
+	"github.com/jackc/pgx/v5/stdlib"
 )
 
 const (

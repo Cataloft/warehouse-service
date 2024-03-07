@@ -6,8 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"lamoda_task/internal/tools/duration"
-
+	"github.com/Cataloft/warehouse-service/internal/tools/duration"
 	"github.com/gin-gonic/gin"
 	requestid "github.com/sumit-tembe/gin-requestid"
 )

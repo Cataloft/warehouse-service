@@ -1,14 +1,13 @@
 package server
 
 import (
-	"lamoda_task/internal/handlers/goods"
 	"log/slog"
 
-	"lamoda_task/internal/config"
-	"lamoda_task/internal/handlers/warehouses"
-	"lamoda_task/internal/middlewares"
-	"lamoda_task/internal/storage/postgres"
-
+	"github.com/Cataloft/warehouse-service/internal/config"
+	"github.com/Cataloft/warehouse-service/internal/handlers/goods"
+	"github.com/Cataloft/warehouse-service/internal/handlers/warehouses"
+	"github.com/Cataloft/warehouse-service/internal/middlewares"
+	"github.com/Cataloft/warehouse-service/internal/storage/postgres"
 	"github.com/gin-gonic/gin"
 	requestid "github.com/sumit-tembe/gin-requestid"
 )

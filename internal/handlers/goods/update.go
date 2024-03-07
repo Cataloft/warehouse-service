@@ -3,12 +3,12 @@ package goods
 import (
 	"errors"
 	"fmt"
-	errs "lamoda_task/internal/constants/errors"
-	"lamoda_task/internal/tools/requests/goods"
-	"lamoda_task/internal/tools/validation"
 	"log/slog"
 	"net/http"
 
+	errs "github.com/Cataloft/warehouse-service/internal/constants/errors"
+	"github.com/Cataloft/warehouse-service/internal/tools/requests/goods"
+	"github.com/Cataloft/warehouse-service/internal/tools/validation"
 	"github.com/gin-gonic/gin"
 	"github.com/jackc/pgx/v5"
 )

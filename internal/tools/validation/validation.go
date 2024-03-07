@@ -3,8 +3,8 @@ package validation
 import (
 	"errors"
 	"fmt"
-	"lamoda_task/internal/tools/requests/goods"
 
+	"github.com/Cataloft/warehouse-service/internal/tools/requests/goods"
 	"github.com/go-playground/validator/v10"
 )
 

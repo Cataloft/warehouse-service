@@ -9,10 +9,9 @@ import (
 	"log/slog"
 	"time"
 
-	"lamoda_task/internal/config"
-	errs "lamoda_task/internal/constants/errors"
-	"lamoda_task/internal/handlers/warehouses"
-
+	"github.com/Cataloft/warehouse-service/internal/config"
+	errs "github.com/Cataloft/warehouse-service/internal/constants/errors"
+	"github.com/Cataloft/warehouse-service/internal/handlers/warehouses"
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 )

@@ -7,8 +7,7 @@ import (
 	"net/http"
 	"strconv"
 
-	errs "lamoda_task/internal/constants/errors"
-
+	errs "github.com/Cataloft/warehouse-service/internal/constants/errors"
 	"github.com/gin-gonic/gin"
 )
 
