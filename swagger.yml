@@ -1,0 +1,192 @@
+openapi: 3.0.0
+info:
+  title: Warehouse api
+  version: 1.0.0
+servers:
+  - url: localhost:1234/api
+paths:
+  /warehouses/{id}:
+    get:
+      tags:
+        - warehouse
+      summary: Find warehouse by ID
+      description: Returns a single warehouse
+      operationId: getWarehouseById
+      parameters:
+        - name: id
+          in: path
+          description: ID of warehouse to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetWarehouseResponse'
+              example:
+                data:
+                  - type: "warehouses"
+                    id: 1
+                    attributes:
+                      name: "Example Name"
+                      availability: true
+                    meta:
+                      totalAmount: 42
+        '404':
+          description: "Error response"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetWarehouseErrResponse'
+              example:
+                errors:
+                  - status: 404
+                    title: "Not Found"
+  /goods:
+    patch:
+      tags:
+        - goods
+      summary: Update goods
+      description: Update goods info.
+      operationId: updateGoods
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateGoodsRequest'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateGoodsResponse'
+              example:
+                data:
+                  - type: "goods"
+                    id: "12345678"
+                    attributes:
+                      amount: 4
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateGoodsErrResponse'
+              example:
+                errors:
+                  - status: 400
+                    meta:
+                      uniqueCode: "12345678"
+                      errTitle: "error"
+components:
+  schemas:
+    GetWarehouseResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Warehouse'
+    GetWarehouseErrResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: integer
+              title:
+                type: string
+            required:
+              - status
+              - title
+    Warehouse:
+      type: object
+      properties:
+        type:
+          type: string
+        id:
+          type: integer
+        attributes:
+          type: object
+          properties:
+            name:
+              type: string
+            availability:
+              type: boolean
+          required:
+            - name
+            - availability
+        meta:
+          type: object
+          properties:
+            totalAmount:
+              type: integer
+          required:
+            - totalAmount
+      required:
+        - type
+        - id
+        - attributes
+        - meta
+    UpdateGoodsRequest:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Goods'
+    Goods:
+      type: object
+      properties:
+        type:
+          type: string
+        id:
+          type: string
+        attributes:
+          type: object
+          properties:
+            amount:
+              type: integer
+          required:
+            - amount
+      required:
+        - type
+        - id
+        - attributes
+    UpdateGoodsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Goods'
+    UpdateGoodsErrResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: integer
+              meta:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    uniqueCode:
+                      type: string
+                    errTitle:
+                      type: string
+            required:
+              - status
+              - title

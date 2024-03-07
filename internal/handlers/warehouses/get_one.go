@@ -22,18 +22,13 @@ type Meta struct {
 
 type Data struct {
 	Type       string     `json:"type"`
-	ID         string     `json:"id"`
+	ID         int64      `json:"id"`
 	Attributes Attributes `json:"attributes"`
 	Meta       Meta       `json:"meta"`
 }
 
 type Response struct {
 	Data []Data `json:"data"`
-}
-
-type ErrMeta struct {
-	UniqueCode string `json:"uniqueCode"`
-	ErrTitle   string `json:"errTitle"`
 }
 
 type Errors struct {
@@ -100,7 +95,7 @@ func GetOne(getter TotalAmountGetter, log *slog.Logger) gin.HandlerFunc {
 
 		resp.Data = append(resp.Data, Data{
 			Type:       "warehouses",
-			ID:         param,
+			ID:         warehouseID,
 			Attributes: attrs,
 			Meta:       Meta{TotalAmount: total},
 		})
